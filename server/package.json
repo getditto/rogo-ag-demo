@@ -2,10 +2,19 @@
   "name": "roboag-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
+    "start": "node index.mjs",
+    "dev": "node index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.x"
+  },
+  "dependencies": {
+    "@dittolive/ditto": "^1.0.17"
+  }
 }
