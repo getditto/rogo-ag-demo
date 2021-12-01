@@ -32,11 +32,13 @@ async function main() {
   ditto.tryStartSync();
   
   liveQuery = ditto.store.collection('tasks').findAll().observe((docs) => {
-    console.log(docs)
+    docs.forEach(doc => {
+      console.log('Document', {_id: doc._id, body: doc.body, isDone: doc.isDone})
+    })
   })
   
   peersObserver = ditto.observePeers((peers) => {
-    console.log(peers)
+    console.log(`Peers: `, peers)
   })
 }
 
