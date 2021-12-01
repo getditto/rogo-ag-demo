@@ -24,13 +24,19 @@ async function main() {
   config.setAllPeerToPeerEnabled(true);
   config.listen.tcp.isEnabled = true;
   config.listen.tcp.interfaceIP = "0.0.0.0";
-  config.listen.tcp.port = 4000;
+  config.listen.http.websocketSync = true;
+  config.listen.http.isEnabled = true;
+  config.listen.http.port = 4000;
 
   ditto.setTransportConfig(config);
   ditto.tryStartSync();
   
   liveQuery = ditto.store.collection('tasks').findAll().observe((docs) => {
     console.log(docs)
+  })
+  
+  peersObserver = ditto.observePeers((peers) => {
+    console.log(peers)
   })
 }
 
